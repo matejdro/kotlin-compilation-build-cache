@@ -7,7 +7,7 @@ https://github.com/matejdro/kotlin-compilation-build-cache/actions/runs/71417178
 (Build cache is always enabled, as that is the whole point of this test. Daemon is disabled because deleting kts files needs daemon restart, so we just don't use it anywhere to keep consistent results between steps.)
 
 1. First build takes a while, but it builds everything and completes. This build should store KTS results into build cache.
-2. Second build with everything already done by the previous build only takes 8 seconds
+2. Second build with everything already done by the previous build, so it only takes 8 seconds
 3. Now we clear compiled kts classes
 4. After clearing classes, next build takes 14 seconds instead of 8 seconds. If build cache really was active for KTS files, this should be the same as previous build or very slightly slower to account for build cache hit. But it takes a lot longer, because all kts files need to be recompiled from scratch.
 5. Last sanity check build that shows that build is again at 8 seconds after files are recompiled.
