@@ -1,4 +1,4 @@
 version: 5
 cache:
   accessControl:
-    anonymousLevel: "write"
+    anonymousLevel: "readwrite"
