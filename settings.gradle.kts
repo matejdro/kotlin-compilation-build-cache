@@ -10,6 +10,7 @@ buildCache {
         isEnabled = true
         isPush = true
         isAllowUntrustedServer = true
+        isAllowInsecureProtocol = true
         setUrl("http://localhost:5071/cache")
     }
 }
