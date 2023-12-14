@@ -15,7 +15,7 @@ jobs:
         run: |                  
           docker run --detach \
               --publish 5071:5071 \
-              --volume /opt/build-cache-node:data \
+              --volume /opt/build-cache-node:${{ github.workspace }}/build-cache/data \
               gradle/build-cache-node:18.0 \
               start
         working-directory: build-cache
