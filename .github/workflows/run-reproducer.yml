@@ -1,5 +1,5 @@
 name: Run reproducer on each commit
-on: 
+on:
   push:
   workflow_dispatch:
 jobs:
@@ -11,6 +11,14 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 11
+      - name: "Start build cache server"
+        run: |                  
+          docker run --detach \
+              --publish 5071:5071 \
+              --volume /opt/build-cache-node:data \
+              gradle/build-cache-node:18.0 \
+              start
+        working-directory: build-cache
       - name: "Run first build that is supposed to compile kts files and store results into build cache"
         run: "./gradlew tasks --build-cache --no-daemon"
       - name: "Second build with compiled kts (cached kts should build at approximately that speed)"
